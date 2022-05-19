@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <title>Joel Ebuka Tobi</title>
         <link rel="shortcut icon" href="/images/favicon.svg" />
+        <link href="../assets/fonts/Hurme Geometric Sans.otf" rel="stylesheet" />
       </Head>
       <body>
         <Main />
