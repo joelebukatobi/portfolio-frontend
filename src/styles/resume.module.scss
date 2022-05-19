@@ -1,0 +1,70 @@
+.resume {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 16rem;
+  & > * {
+    &:first-child {
+      width: 100%;
+      margin-bottom: 1.6rem;
+      font-family: $font-secondary;
+      color: $color-orange;
+    }
+    &:not(:first-child) {
+      // flex: 1;
+      width: 42.5%;
+    }
+  }
+
+  & p {
+    color: rgba($color-white, 0.6);
+  }
+
+  &__left {
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 2.4rem;
+      }
+    }
+  }
+
+  &__right {
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 2.4rem;
+      }
+    }
+  }
+
+  &__card {
+    & > * {
+      &:not(:last-child) {
+      }
+    }
+    & h6 {
+      color: $color-soft-orange;
+      font-family: $font-secondary;
+    }
+    & .date,
+    & .description {
+      color: $color-off-white;
+    }
+
+    & .date {
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    & ul {
+      list-style: none;
+      & li {
+        font-size: 1.6rem;
+        color: rgba($color-white, 0.6);
+        & span {
+          color: $color-orange;
+        }
+      }
+    }
+  }
+}

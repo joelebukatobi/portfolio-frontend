@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@600;700&display=swap');
+
+// Color Variables //
+// ---------------------------------------------------------------------//
+$color-white: #ffffff;
+$color-black: #000000;
+$color-orange: #eb5e28;
+$color-off-white: #fffcf2;
+$color-soft-orange: #f9b171;
+$color-dark-orange: #252422;
+
+// Font Variables //
+// ---------------------------------------------------------------------//
+@font-face {
+  font-family: 'Hurme Geometric Sans';
+  src: url('../assets/fonts/Hurme Geometric Sans.otf');
+}
+
+$font-primary: 'Hurme Geometric Sans', sans-serif;
+$font-secondary: 'Fira Code', monospace;
+
+// Main //
+// ---------------------------------------------------------------------//
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  color: $color-off-white;
+  font-family: $font-primary;
+}
+
+a,
+a:link,
+a:visited,
+a:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+input:link,
+input:hover,
+input:focus,
+input:active {
+  outline: none;
+  border: none;
+}
+
+textarea:link,
+textarea:hover,
+textarea:focus,
+textarea:active {
+  outline: none;
+}
+
+select:link,
+select:hover,
+select:focus,
+select:active {
+  outline: none;
+}
+
+button:link,
+button:hover,
+button:focus,
+button:active {
+  outline: none;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; //10px/16px = 62.5% 1rem
+  font-family: $font-primary;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    font-size: 50%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 50%;
+  }
+}
+
+body {
+  background-color: $color-dark-orange;
+  font-family: $font-primary;
+  line-height: 1.6;
+}

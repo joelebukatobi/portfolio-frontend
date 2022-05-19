@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 16rem;
+  &__text {
+    width: 51%;
+    & h1 {
+      width: 100%;
+      font-family: $font-secondary;
+      & span {
+        font-family: $font-secondary;
+        color: $color-orange;
+      }
+    }
+    & p {
+      color: rgba($color-white, 0.6);
+    }
+  }
+
+  &__input {
+    width: 40%;
+    & > * {
+      width: 100%;
+      &:not(:last-child) {
+        margin-bottom: 3.2rem;
+      }
+      &:last-child {
+        width: 31.26%;
+      }
+    }
+    & .group {
+      display: flex;
+      justify-content: space-between;
+      & > * {
+        width: 46.8%;
+      }
+    }
+  }
+}
