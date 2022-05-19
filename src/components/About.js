@@ -7,8 +7,7 @@ export default function About() {
       <div className="about__text">
         <h2>
           Hi,👋🏼
-          <br />
-          I’m <span>J</span>oel <span>E</span>buka <span>T</span>obi
+          <br /> I’m <span>J</span>oel <span>E</span>buka <span>T</span>obi
         </h2>
         <h4>
           I’m a driven and passionate <span>UI/UX Designer & Frontend Developer</span>, creating and building amazing

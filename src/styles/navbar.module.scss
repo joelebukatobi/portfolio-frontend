@@ -21,16 +21,8 @@
     display: inline-block;
   }
   &__logo {
-    // & svg {
-    //   height: 100%;
-    //   width: 100%;
-    // }
-
     font-size: 2.1rem;
-    & span {
-      color: $color-orange;
-    }
-    & p {
+    & a {
       font-size: 2.1rem;
       cursor: pointer;
       & span {

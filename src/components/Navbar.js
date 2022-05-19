@@ -6,9 +6,7 @@ export default function Navbar() {
       <div className="navbar__mobile">
         <div className="navbar__logo">
           <a href="/">
-            <p>
-              <span>&lt;</span>jetdev <span>&#47;&gt;</span>
-            </p>
+            <span>&lt;</span>jetdev <span>&#47;&gt;</span>
           </a>
         </div>
 

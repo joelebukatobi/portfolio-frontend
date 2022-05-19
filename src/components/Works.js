@@ -1,11 +1,13 @@
 export default function Works() {
   return (
     <section className="works container ">
-      <div className="works__heading">
-        <h4>featured</h4>
-        <h4>others</h4>
-      </div>
       <div className="works__grid">
+        <div>
+          <h4>featured</h4>
+        </div>
+        <div>
+          <h4>others</h4>
+        </div>
         <div className="works__card">
           <h4>Lyndem Edutainment</h4>
           <p>HTML ~ CSS ~ JAVASCRIPT</p>
@@ -90,7 +92,7 @@ export default function Works() {
               <p>Code</p>
             </div>
           </div>
-        </div>{' '}
+        </div>
         <div className="works__card">
           <h4>Lyndem Edutainment</h4>
           <p>HTML ~ CSS ~ JAVASCRIPT</p>
@@ -109,7 +111,7 @@ export default function Works() {
               <p>Code</p>
             </div>
           </div>
-        </div>{' '}
+        </div>
         <div className="works__card">
           <h4>Lyndem Edutainment</h4>
           <p>HTML ~ CSS ~ JAVASCRIPT</p>
