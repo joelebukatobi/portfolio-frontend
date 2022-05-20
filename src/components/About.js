@@ -15,7 +15,7 @@ export default function About() {
           using <span>Strapi</span> and exploring the world of <span>DevOps</span> as well.
         </h4>
         <ul className="">
-          <Link href="/about">
+          <Link href="https://github.com/joelebukatobi">
             <li>
               <svg>
                 <use href="/images/sprite.svg#icon-github" />
@@ -23,24 +23,30 @@ export default function About() {
               <p>Github</p>
             </li>
           </Link>
-          <li>
-            <svg>
-              <use href="/images/sprite.svg#icon-dribble" />
-            </svg>
-            <p>Dribbble</p>
-          </li>
-          <li>
-            <svg>
-              <use href="/images/sprite.svg#icon-twitter" />
-            </svg>
-            <p>Twitter</p>
-          </li>
-          <li>
-            <svg>
-              <use href="/images/sprite.svg#icon-email" />
-            </svg>
-            <p>Email</p>
-          </li>
+          <Link href="https://dribbble.com/JetDev">
+            <li>
+              <svg>
+                <use href="/images/sprite.svg#icon-dribble" />
+              </svg>
+              <p>Dribbble</p>
+            </li>
+          </Link>
+          <Link href="https://twitter.com/joelebukatobi">
+            <li>
+              <svg>
+                <use href="/images/sprite.svg#icon-twitter" />
+              </svg>
+              <p>Twitter</p>
+            </li>
+          </Link>{' '}
+          <Link href="mailto:joelebuka@gmail.com">
+            <li>
+              <svg>
+                <use href="/images/sprite.svg#icon-email" />
+              </svg>
+              <p>Email</p>
+            </li>
+          </Link>
         </ul>
       </div>
       <div className="about__image">

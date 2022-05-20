@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Works() {
   return (
     <section className="works container ">
@@ -16,18 +18,20 @@ export default function Works() {
             interactive play using educational games and activities.
           </p>
           <div className="works__card__group">
-            <div className="works__card__link">
-              <svg>
-                <use href="/images/sprite.svg#icon-live" />
-              </svg>
-              <p>Live</p>
-            </div>
-            <div className="works__card__link">
+            <Link href="https://lyndemedutainment.com">
+              <div className="works__card__link">
+                <svg>
+                  <use href="/images/sprite.svg#icon-live" />
+                </svg>
+                <p>Live</p>
+              </div>
+            </Link>
+            {/* <div className="works__card__link">
               <svg>
                 <use href="/images/sprite.svg#icon-code" />
               </svg>
               <p>Code</p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="works__card">
