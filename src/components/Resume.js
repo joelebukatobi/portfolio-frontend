@@ -17,7 +17,7 @@ export default function Resume() {
         </div>
         <div className="resume__card">
           <h6 className="title">familiar with</h6>
-          <p>WordPress, Node JS, ExpressJs, BulmaCSS, SEO,</p>
+          <p>WordPress, Node JS, Express, BulmaCSS, SEO,</p>
         </div>
         <div className="resume__card">
           <h6 className="title">work experience</h6>

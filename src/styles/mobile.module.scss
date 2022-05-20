@@ -2,8 +2,6 @@
   @media (min-width: 320px) and (max-width: 768px) {
     position: fixed;
     width: 100%;
-    height: 7.2rem;
-    padding-top: 0;
     & > * {
       &:not(:last-child) {
         margin-right: 2.4rem;
@@ -31,43 +29,129 @@
 
 .about {
   @media (min-width: 320px) and (max-width: 768px) {
-    height: unset;
     flex-direction: column-reverse;
+    height: unset;
     margin-top: 12.8rem;
     margin-bottom: 8rem;
     & > * {
       width: 100%;
+      height: 100%;
     }
+
     &__text {
       & h2 {
         width: 100%;
-        font-size: 5rem;
-        color: $color-orange;
+        color: $color-off-white;
         & br {
           display: none;
         }
         & span {
-          // color: $color-off-white;
         }
       }
     }
 
     &__image {
-      height: 50vh;
       flex-direction: column;
+      height: 40vh;
       & .bg {
-        width: 90%;
+        width: 80%;
+        height: 100%;
       }
 
       & .text {
+        width: 100%;
+        height: 100%;
         & p {
           &:nth-last-of-type(1) {
-            left: 0;
+            top: unset;
+            left: 5%;
+            bottom: 18%;
           }
           &:nth-last-of-type(2) {
-            right: 0;
+            right: 0%;
           }
         }
+      }
+
+      & .picture {
+        height: unset;
+        width: unset;
+        & img {
+          height: unset;
+          width: 60%;
+        }
+      }
+
+      & .icon {
+        height: 100%;
+        width: 100%;
+        &__figma {
+          top: 17%;
+        }
+        &__strapi {
+          left: 10%;
+        }
+        &__next {
+          right: 5%;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 375px) and (max-width: 480px) {
+    &__image {
+      height: 45vh;
+      & .bg {
+        width: 70%;
+      }
+
+      & .picture {
+        & img {
+          width: 50%;
+        }
+      }
+
+      & .icon {
+        height: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 576px) {
+    &__image {
+      height: 45vh;
+      & .bg {
+        width: 70%;
+      }
+
+      & .picture {
+        & img {
+          width: 50%;
+        }
+      }
+
+      & .icon {
+        height: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 620px) {
+    &__image {
+      height: 55vh;
+    }
+  }
+
+  @media (min-width: 620px) and (max-width: 768px) {
+    &__image {
+      height: 80vh;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1280px) {
+    &__text {
+      & h2 {
+        font-size: 5rem;
       }
     }
   }
@@ -149,6 +233,21 @@
         &:last-child {
           width: 100%;
         }
+      }
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    &__text {
+      & h1 {
+        line-height: 11rem;
+        font-size: 7.2rem;
+      }
+    }
+  }
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    &__text {
+      & h1 {
+        font-size: 8rem;
       }
     }
   }

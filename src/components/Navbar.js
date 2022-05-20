@@ -20,19 +20,13 @@ export default function Navbar() {
       <nav className="navbar__nav ">
         <ul className="navbar__list">
           <li className="navbar__item">
-            <Link className="navbar__link" href="/project">
-              projects
-            </Link>
+            <Link href="/project">projects</Link>
           </li>
           <li className="navbar__item">
-            <Link className="navbar__link" href="/resume">
-              resume
-            </Link>
+            <Link href="/resume">resume</Link>
           </li>{' '}
           <li className="navbar__item">
-            <Link className="navbar__link" href="/about">
-              blog
-            </Link>
+            <Link href="/about">blog</Link>
           </li>
         </ul>
         <ul className="navbar__contact">
