@@ -1,9 +1,5 @@
 .resume {
-  height: 100vh;
   padding-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   &__heading {
     margin-bottom: 2.4rem;
     color: $color-orange;
@@ -18,7 +14,7 @@
   }
 
   & p {
-    color: rgba($color-white, 0.6);
+    color: rgba($color-white, 0.8);
   }
 
   &__left {

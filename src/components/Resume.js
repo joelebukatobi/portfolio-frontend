@@ -12,7 +12,7 @@ export default function Resume() {
           <div className="resume__card">
             <h6 className="title">core technologies</h6>
             <p>
-              HTML/CSS, SASS, Javascript [ES6+], React JS, Next JS, Strapi JS TailwindCSS, Typescript, GraphQL, REST
+              HTML, CSS, SASS, Javascript [ES6+], React JS, Next JS, Strapi JS,TailwindCSS, Typescript, GraphQL, REST
               APIs & Figma
             </p>
           </div>

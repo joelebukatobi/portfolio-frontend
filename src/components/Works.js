@@ -13,10 +13,7 @@ export default function Works() {
         <div className="works__card">
           <h5>Santis-Med</h5>
           <p>GATSBY ~ TAILWINDCSS ~ GRAPHQL</p>
-          <p>
-            SANTIS is a luxury membership based medical concierge service. At Santis our top priority is ensuring that
-            you get the care you need in the most comfortable & seamless way.
-          </p>
+          <p>SANTIS is a luxury membership based medical concierge service.</p>
           <div className="works__card__group">
             <Link href="https://santismed.com/">
               <div className="works__card__link">
@@ -35,7 +32,7 @@ export default function Works() {
           </div>
         </div>
         <div className="works__card">
-          <h5>Lyndem Edutainment</h5>
+          {/* <h5>Lyndem Edutainment</h5>
           <p>HTML ~ CSS ~ JAVASCRIPT</p>
           <p>
             Lyndem Edutainment Website - an educational service provider that engenders learning through the art of
@@ -54,10 +51,10 @@ export default function Works() {
               </svg>
               <p>Code</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="works__card">
-          <h5>Lyndem Edutainment</h5>
+          {/* <h5>Lyndem Edutainment</h5>
           <p>HTML ~ SCSS ~ JAVASCRIPT</p>
           <p>
             Lyndem Edutainment Website - an educational service provider that engenders learning through the art of
@@ -76,17 +73,13 @@ export default function Works() {
               </svg>
               <p>Code</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="works__card">
           <h5>Jayk Academy</h5>
-          <p>NEXT JS ~ TAILWIND</p>
-          <p>
-            WeCare-Ng Is A Community Healthcare center that is committed to providing quality, comprehensive healthcare
-            and specialized services to communities across Nigeria
-          </p>
+          <p>NEXT JS ~ SCSS ~ TAILWINDCSS</p>
           <div className="works__card__group">
-            <Link href="https://wecare-ng.com/">
+            <Link href="https://www.jaykacademy.com/">
               <div className="works__card__link">
                 <svg>
                   <use href="/images/sprite.svg#icon-live" />
@@ -99,10 +92,6 @@ export default function Works() {
         <div className="works__card">
           <h5>Lyndem Edutainment</h5>
           <p>HTML ~ CSS ~ JAVASCRIPT</p>
-          <p>
-            Lyndem Edutainment Website - an educational service provider that engenders learning through the art of
-            interactive play using educational games and activities.
-          </p>
           <div className="works__card__group">
             <Link href="https://lyndemedutainment.com">
               <div className="works__card__link">
@@ -117,10 +106,6 @@ export default function Works() {
         <div className="works__card">
           <h5>WeCare-NG</h5>
           <p>HTML ~ CSS ~ JAVASCRIPT</p>
-          <p>
-            WeCare-Ng Is A Community Healthcare center that is committed to providing quality, comprehensive healthcare
-            and specialized services to communities across Nigeria
-          </p>
           <div className="works__card__group">
             <Link href="https://wecare-ng.com/">
               <div className="works__card__link">
