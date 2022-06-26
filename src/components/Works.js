@@ -58,7 +58,7 @@ export default function Works() {
         </div>
         <div className="works__card">
           <h5>Lyndem Edutainment</h5>
-          <p>HTML ~ CSS ~ JAVASCRIPT</p>
+          <p>HTML ~ SCSS ~ JAVASCRIPT</p>
           <p>
             Lyndem Edutainment Website - an educational service provider that engenders learning through the art of
             interactive play using educational games and activities.
@@ -79,8 +79,8 @@ export default function Works() {
           </div>
         </div>
         <div className="works__card">
-          <h5>WeCare-NG</h5>
-          <p>HTML ~ CSS ~ JAVASCRIPT</p>
+          <h5>Jayk Academy</h5>
+          <p>NEXT JS ~ TAILWIND</p>
           <p>
             WeCare-Ng Is A Community Healthcare center that is committed to providing quality, comprehensive healthcare
             and specialized services to communities across Nigeria
@@ -115,22 +115,21 @@ export default function Works() {
           </div>
         </div>
         <div className="works__card">
-          <h5>Lyndem Edutainment</h5>
+          <h5>WeCare-NG</h5>
           <p>HTML ~ CSS ~ JAVASCRIPT</p>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit</p>
+          <p>
+            WeCare-Ng Is A Community Healthcare center that is committed to providing quality, comprehensive healthcare
+            and specialized services to communities across Nigeria
+          </p>
           <div className="works__card__group">
-            <div className="works__card__link">
-              <svg>
-                <use href="/images/sprite.svg#icon-live" />
-              </svg>
-              <p>Live</p>
-            </div>
-            <div className="works__card__link">
-              <svg>
-                <use href="/images/sprite.svg#icon-code" />
-              </svg>
-              <p>Code</p>
-            </div>
+            <Link href="https://wecare-ng.com/">
+              <div className="works__card__link">
+                <svg>
+                  <use href="/images/sprite.svg#icon-live" />
+                </svg>
+                <p>Live</p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
