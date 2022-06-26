@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Contact from '@/components/Contact';
 import Resume from '@/components/Resume';
 import Works from '@/components/Works';

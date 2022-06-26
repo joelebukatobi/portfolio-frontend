@@ -1,5 +1,8 @@
 .works {
-  margin-bottom: 16rem;
+  height: 100vh;
+  padding-top: 10vh;
+  display: flex;
+  align-items: center;
   &__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -35,8 +38,7 @@
   }
 
   & h4 {
-    font-family: $font-secondary;
-    font-weight: 500;
+    // font-weight: 500;
     color: $color-orange;
   }
 
@@ -45,10 +47,9 @@
     box-shadow: 0rem 0.5rem 0.4rem rgba(249, 177, 113, 0.05);
     border-radius: 0.5rem;
     padding: 1.6rem 2.4rem;
-    & h4 {
-      font-weight: 400;
+    & h5 {
+      font-weight: 500;
       color: $color-soft-orange;
-      font-family: $font-primary;
     }
 
     & p {

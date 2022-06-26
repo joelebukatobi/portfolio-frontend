@@ -1,18 +1,16 @@
 .navbar {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-top: 3.2rem;
-  padding-bottom: 3.2rem;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: $color-dark-orange;
-  z-index: 2;
+  height: 10vh;
+
+  &__container {
+    background-color: $color-dark-orange;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
   &__mobile {
     display: flex;
     align-items: center;
@@ -37,7 +35,6 @@
   &__nav {
     display: flex;
     justify-content: space-between;
-    width: 90%;
   }
 
   &__list {
@@ -63,4 +60,8 @@
   &__link {
     border: 2px solid red;
   }
+}
+
+.active {
+  color: $color-orange;
 }

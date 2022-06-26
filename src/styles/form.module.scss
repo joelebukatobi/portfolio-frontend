@@ -1,16 +1,19 @@
 .form {
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 16rem;
+  align-items: center;
+  padding-top: 10vh;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
   &__text {
     width: 51%;
     & h1 {
       width: 100%;
-      line-height: 11.7rem;
-      font-family: $font-secondary;
+      margin-bottom: 2.4rem;
       & span {
-        font-family: $font-secondary;
         color: $color-orange;
       }
     }
