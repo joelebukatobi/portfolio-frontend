@@ -60,8 +60,13 @@
   &__link {
     border: 2px solid red;
   }
-}
 
-.active {
-  color: $color-orange;
+  &__projects,
+  &__resume,
+  &__contact,
+  &__blog {
+    & a {
+      color: $color-orange;
+    }
+  }
 }

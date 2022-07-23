@@ -1,5 +1,5 @@
 .works {
-  padding-top: 10vh;
+  padding-top: 16vh;
   &__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -40,7 +40,7 @@
   }
 
   &__card {
-    background-color: #3b3a38;
+    background-color: rgba(#3b3a38, 0.5);
     box-shadow: 0rem 0.5rem 0.4rem rgba(249, 177, 113, 0.05);
     border-radius: 0.5rem;
     padding: 1.6rem 2.4rem;

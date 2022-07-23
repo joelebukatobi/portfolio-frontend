@@ -1,0 +1,84 @@
+.blog {
+  padding-top: 16vh;
+  display: flex;
+  justify-content: space-between;
+  &__left {
+    width: 82.05%;
+    display: flex;
+    // justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6.26%;
+  }
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 17.95%;
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 8rem;
+      }
+    }
+  }
+
+  &__categories,
+  &__share {
+    display: flex;
+    flex-direction: column;
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+    }
+    & h6 {
+      font-family: $font-primary;
+      color: $color-off-white;
+    }
+    & hr {
+      width: 4rem;
+      border: none;
+      height: 0.2rem;
+      background-color: $color-orange;
+    }
+    & ul {
+      & > * {
+        &:not(:last-child) {
+          margin-bottom: 1.6rem;
+        }
+      }
+      & li {
+        list-style: none;
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  &__card {
+    background-color: rgba(#3b3a38, 0.5);
+    box-shadow: 0rem 0.5rem 0.4rem rgba(249, 177, 113, 0.05);
+    border-radius: 0.5rem;
+    padding: 1.6rem;
+    width: 46.87%;
+    // height: 20.5rem;
+    margin-bottom: 6.26%;
+
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 0.8rem;
+      }
+    }
+
+    & h4 {
+      font-family: $font-primary;
+      color: $color-off-white;
+    }
+
+    & p {
+      color: rgba($color-white, 0.8);
+    }
+    & a {
+      color: $color-soft-orange;
+      font-size: 1.6rem;
+    }
+  }
+}

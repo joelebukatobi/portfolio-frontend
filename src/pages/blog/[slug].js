@@ -1,11 +1,11 @@
 import Navbar from '@/components/Navbar';
-import About from '@/components/About';
+import Blogpost from '@/components/Blogpost';
 
 export default function Home() {
   return (
     <div>
       <Navbar />
-      <About />
+      <Blogpost />
     </div>
   );
 }

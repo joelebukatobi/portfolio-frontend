@@ -69,7 +69,7 @@
 
 .about {
   @media (min-width: 320px) and (max-width: 768px) {
-    height: 90vh;
+    // height: 90vh;
     margin-bottom: 0rem;
     &__image {
       height: 100%;
@@ -132,6 +132,7 @@
 
 .works {
   @media (min-width: 320px) and (max-width: 768px) {
+    padding-top: 10vh;
     height: unset;
     &__grid {
       display: grid;
@@ -170,6 +171,7 @@
 
 .resume {
   @media (min-width: 320px) and (max-width: 768px) {
+    padding-top: 10vh;
     height: unset;
     &__content {
       flex-direction: column;
@@ -188,6 +190,7 @@
 
 .form {
   @media (min-width: 320px) and (max-width: 768px) {
+    padding-top: 10vh;
     height: unset;
     &__content {
       flex-direction: column;
@@ -225,6 +228,98 @@
     &__text {
       & h1 {
         font-size: 8rem;
+      }
+    }
+  }
+}
+
+.blog {
+  @media (min-width: 320px) and (max-width: 768px) {
+    padding-top: 10vh;
+    flex-direction: column-reverse;
+    & > * {
+      width: 100%;
+    }
+    &__right {
+      align-items: flex-start;
+      margin-bottom: 4rem;
+      & > * {
+        &:not(:last-child) {
+          margin-bottom: 3.2rem;
+        }
+      }
+    }
+
+    &__categories,
+    &__share {
+      & hr {
+        // width: 100%;
+      }
+      & ul {
+        display: flex;
+        & > * {
+          &:not(:last-child) {
+            margin-right: 1.6rem;
+          }
+        }
+      }
+    }
+
+    &__card {
+      width: 100%;
+    }
+  }
+}
+
+.blogpost {
+  @media (min-width: 320px) and (max-width: 768px) {
+    position: relative;
+    &__image {
+      height: 40rem;
+    }
+    &__main {
+      flex-direction: column;
+      & > * {
+        width: 100%;
+        &:not(:last-child) {
+          margin-bottom: 4rem;
+        }
+      }
+    }
+
+    &__aside {
+      width: 100%;
+      & > * {
+        &:not(:last-child) {
+          margin-bottom: 1.6rem;
+        }
+      }
+    }
+
+    &__categories,
+    &__share {
+      flex-direction: row;
+      padding: 1.6rem;
+      background-color: rgba(#3b3a38, 0.8);
+      border-radius: 0.5rem;
+      & > * {
+        &:not(:last-child) {
+          margin-right: 1.6rem;
+          margin-bottom: 0;
+        }
+      }
+      & hr {
+        width: 0.2rem;
+        height: 2.4rem;
+      }
+
+      & ul {
+        flex-wrap: wrap;
+        & > * {
+          &:not(:last-child) {
+            margin-bottom: 0;
+          }
+        }
       }
     }
   }

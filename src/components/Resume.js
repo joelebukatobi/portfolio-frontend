@@ -1,7 +1,6 @@
 export default function Resume() {
   return (
     <section id="resume" className="resume container">
-      <h4 className="resume__heading">resume</h4>
       <div className="resume__content">
         <div className="resume__left">
           <p>
@@ -113,8 +112,7 @@ export default function Resume() {
             <ul className="list">
               <li className="item">
                 <span>~</span>{' '}
-                <p>Worked as a Front-end Developer using tools such as HTML, CSS, SaSS, JavaScript and</p>
-                Bootstrap.
+                <p>Worked as a Front-end Developer using tools such as HTML, CSS, SaSS, JavaScript and Bootstrap.</p>
               </li>
               <li className="item">
                 <span>~</span> <p>Administered TOEFL exams for registered students</p>
