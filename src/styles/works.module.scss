@@ -40,17 +40,18 @@
   }
 
   &__card {
-    background-color: rgba(#3b3a38, 0.5);
-    box-shadow: 0rem 0.5rem 0.4rem rgba(249, 177, 113, 0.05);
+    background-color: rgba(#3b3a38, 0.8);
     border-radius: 0.5rem;
     padding: 1.6rem 2.4rem;
     & h5 {
       font-weight: 500;
       color: $color-soft-orange;
+      font-family: $font-primary;
+      font-weight: 700;
     }
 
     & p {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       margin-top: 0.8rem;
       &:nth-of-type(2) {
         color: rgba($color-white, 0.8);
@@ -70,9 +71,11 @@
       & svg {
         height: 1.6rem;
         width: 1.6rem;
+        margin: 0;
         fill: rgba($color-off-white, 0.5);
       }
       & p {
+        font-size: 1.4rem;
         margin: 0;
         color: rgba($color-off-white, 0.5);
       }

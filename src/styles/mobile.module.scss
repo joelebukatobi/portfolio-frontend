@@ -132,7 +132,7 @@
 
 .works {
   @media (min-width: 320px) and (max-width: 768px) {
-    // padding-top: 10vh;
+    padding-top: 12vh;
     height: unset;
     &__grid {
       display: grid;
@@ -166,12 +166,20 @@
         }
       }
     }
+
+    &__card {
+      &__link {
+        & p {
+          margin-top: 0.3rem;
+        }
+      }
+    }
   }
 }
 
 .resume {
   @media (min-width: 320px) and (max-width: 768px) {
-    // padding-top: 10vh;
+    padding-top: 12vh;
     height: unset;
     &__content {
       flex-direction: column;
@@ -190,7 +198,7 @@
 
 .form {
   @media (min-width: 320px) and (max-width: 768px) {
-    padding-top: 10vh;
+    padding-top: 12vh;
     height: unset;
     &__content {
       flex-direction: column;
@@ -235,7 +243,7 @@
 
 .blog {
   @media (min-width: 320px) and (max-width: 768px) {
-    // padding-top: 10vh;
+    padding-top: 12vh;
     flex-direction: column-reverse;
     & > * {
       width: 100%;
@@ -246,21 +254,6 @@
       & > * {
         &:not(:last-child) {
           margin-bottom: 3.2rem;
-        }
-      }
-    }
-
-    &__categories,
-    &__share {
-      & hr {
-        // width: 100%;
-      }
-      & ul {
-        display: flex;
-        & > * {
-          &:not(:last-child) {
-            margin-right: 1.6rem;
-          }
         }
       }
     }
@@ -284,13 +277,16 @@
       }
       & hr {
         width: 0.2rem;
-        height: 2.4rem;
+        height: 2.2rem;
       }
 
       & ul {
+        display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
         & > * {
           &:not(:last-child) {
+            margin-right: 1.6rem;
             margin-bottom: 0;
           }
         }
@@ -309,7 +305,7 @@
 
 .blogpost {
   @media (min-width: 320px) and (max-width: 768px) {
-    // padding-top: 10vh;
+    padding-top: 12vh;
     &__image {
       height: 40rem;
     }

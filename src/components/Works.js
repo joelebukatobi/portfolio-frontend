@@ -15,14 +15,14 @@ export default function Works() {
           <p>GATSBY ~ TAILWINDCSS ~ GRAPHQL</p>
           <p>SANTIS is a luxury membership based medical concierge service.</p>
           <div className="works__card__group">
-            <Link href="https://santismed.com/">
+            <a href="https://santismed.com/">
               <div className="works__card__link">
                 <svg>
                   <use href="/images/sprite.svg#icon-live" />
                 </svg>
                 <p>Live</p>
               </div>
-            </Link>
+            </a>
             {/* <div className="works__card__link">
               <svg>
                 <use href="/images/sprite.svg#icon-code" />
