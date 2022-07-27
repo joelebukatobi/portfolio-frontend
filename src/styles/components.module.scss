@@ -38,11 +38,13 @@ button {
   border-radius: 0.5rem;
   background-color: $color-orange;
   font-size: 2.1rem;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
 input {
   font-size: 2.1rem;
+  text-transform: lowercase;
   line-height: 1.95rem;
   height: 6.4rem;
   border-radius: 0.5rem;
@@ -56,6 +58,7 @@ input {
 
 textarea {
   font-size: 2.1rem;
+  text-transform: lowercase;
   border-radius: 0.5rem;
   height: 22.4rem;
   padding: 1.6rem;

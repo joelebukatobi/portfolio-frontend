@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 export default function Resume() {
   return (
     <section id="resume" className="resume container">

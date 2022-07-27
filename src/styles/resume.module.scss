@@ -1,5 +1,5 @@
 .resume {
-  padding-top: 16vh;
+  padding-bottom: 8rem;
   &__heading {
     margin-bottom: 2.4rem;
     color: $color-orange;
@@ -14,7 +14,7 @@
   }
 
   & p {
-    color: rgba($color-white, 0.8);
+    color: rgba($color-off-white, 0.8);
   }
 
   &__left {
@@ -40,19 +40,17 @@
       }
     }
     & h6 {
-      color: $color-soft-orange;
-      font-family: $font-primary;
+      color: $color-orange;
     }
     & .date {
-      color: $color-orange;
+      color: $color-soft-orange;
+      font-size: 1.2rem;
+      font-style: italic;
+      text-transform: capitalize;
     }
     & .description {
       color: $color-off-white;
-    }
-
-    & .date {
-      font-size: 1.2rem;
-      text-transform: uppercase;
+      font-weight: 700;
     }
 
     & ul {

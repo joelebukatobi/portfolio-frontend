@@ -1,10 +1,10 @@
-import Navbar from '@/components/Navbar';
+import Layout from '@/components/Layout';
 import Works from '@/components/Works';
+
 export default function projects() {
   return (
-    <div>
-      <Navbar project={'navbar__projects'} />
+    <Layout project={'navbar__projects'}>
       <Works />
-    </div>
+    </Layout>
   );
 }

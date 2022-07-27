@@ -30,7 +30,7 @@ export default function Navbar({ project, resume, blog, contact }) {
                 <Link href="/blog">blog</Link>
               </li>
               <li className={`navbar__item ${contact}`}>
-                <Link href="/contact">contact</Link>
+                <Link href="/#contact">contact</Link>
               </li>
             </ul>
           </nav>

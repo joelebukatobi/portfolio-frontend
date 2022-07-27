@@ -27,7 +27,7 @@ $font-secondary: 'Fira Code', monospace;
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  color: $color-off-white;
+  color: rgba($color-off-white, 0.8);
   font-family: $font-primary;
 }
 

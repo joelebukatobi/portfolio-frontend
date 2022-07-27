@@ -69,6 +69,7 @@
 
 .about {
   @media (min-width: 320px) and (max-width: 768px) {
+    padding-bottom: 8rem;
     &__image {
       height: 100vh;
       width: 100vw;
@@ -127,7 +128,8 @@
 
 .works {
   @media (min-width: 320px) and (max-width: 768px) {
-    padding-top: 12vh;
+    margin-top: 0;
+    padding-top: 0;
     height: unset;
     &__grid {
       display: grid;
@@ -135,34 +137,14 @@
       grid-template-rows: auto;
       grid-row-gap: 3.2rem;
       & > * {
-        &:nth-child(1) {
-          grid-area: 1 / 1 / 2 / 2;
-        }
-        &:nth-child(2) {
-          grid-area: 5 / 1 / 6 / 2;
-        }
-        &:nth-child(3) {
-          grid-area: 2 / 1 / 3 / 2;
-        }
-        &:nth-child(4) {
-          grid-area: 4 / 1 / 5 / 2;
-        }
-        &:nth-child(5) {
-          grid-area: 3 / 1 / 4 / 2;
-        }
-        &:nth-child(6) {
-          grid-area: 6 / 1 / 7 / 2;
-        }
-        &:nth-child(7) {
-          grid-area: 7 / 1 / 8 / 2;
-        }
-        &:nth-child(8) {
-          grid-area: 8 / 1 / 9 / 2;
-        }
+        width: 100%;
       }
     }
 
     &__card {
+      & figure {
+        height: 32rem;
+      }
       &__link {
         & p {
           margin-top: 0.3rem;
@@ -174,7 +156,9 @@
 
 .resume {
   @media (min-width: 320px) and (max-width: 768px) {
-    padding-top: 12vh;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 4rem;
     height: unset;
     &__content {
       flex-direction: column;
@@ -193,7 +177,9 @@
 
 .form {
   @media (min-width: 320px) and (max-width: 768px) {
+    margin-top: 0;
     padding-top: 12vh;
+    padding-bottom: 4rem;
     height: unset;
     &__content {
       flex-direction: column;
@@ -238,8 +224,8 @@
 
 .blog {
   @media (min-width: 320px) and (max-width: 768px) {
-    padding-top: 12vh;
-    flex-direction: column-reverse;
+    margin-top: 0;
+    flex-direction: column;
     & > * {
       width: 100%;
     }
@@ -258,7 +244,7 @@
       width: 100%;
       flex-direction: row;
       padding: 1.6rem;
-      background-color: rgba($color-soft-orange, 0.8);
+      background-color: rgba(#3b3a38, 0.8);
       border-radius: 0.5rem;
       & > * {
         &:not(:last-child) {
@@ -267,8 +253,8 @@
         }
       }
       & h6 {
-        color: $color-dark-orange;
-        font-weight: 700;
+        color: $color-white;
+        font-weight: unset;
       }
       & hr {
         width: 0.2rem;
@@ -286,8 +272,8 @@
           }
         }
         & li {
-          color: $color-dark-orange;
-          font-weight: 700;
+          color: $color-white;
+          font-weight: unset;
         }
       }
     }
@@ -322,21 +308,23 @@
         }
       }
     }
+  }
+}
 
-    &__categories,
-    &__share {
-      background-color: rgba(#3b3a38, 0.8);
-      border-radius: 0.5rem;
-      & h6 {
-        color: $color-white;
-        font-weight: unset;
-      }
-      & ul {
-        & li {
-          color: $color-white;
-          font-weight: unset;
-        }
-      }
+.post {
+  margin-top: 0;
+  @media (min-width: 320px) and (max-width: 768px) {
+    &__card {
+      width: 100%;
+      margin-bottom: 3.2rem;
+    }
+  }
+}
+
+.header {
+  @media (min-width: 320px) and (max-width: 768px) {
+    &__image {
+      width: 100%;
     }
   }
 }

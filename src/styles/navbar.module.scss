@@ -10,6 +10,7 @@
     position: fixed;
     width: 100%;
     z-index: 10;
+    top: 0;
   }
   &__mobile {
     display: flex;
@@ -23,6 +24,7 @@
     & a {
       font-size: 2.1rem;
       cursor: pointer;
+      color: $color-off-white;
       & span {
         color: $color-orange;
       }
@@ -55,10 +57,9 @@
         color: $color-orange;
       }
     }
-  }
-
-  &__link {
-    border: 2px solid red;
+    & a {
+      color: $color-off-white;
+    }
   }
 
   &__projects,

@@ -1,10 +1,9 @@
-import Navbar from '@/components/Navbar';
+import Layout from '@/components/Layout';
 import Resume from '@/components/Resume';
 export default function projects() {
   return (
-    <div>
-      <Navbar resume={'navbar__resume'} />
+    <Layout resume={'navbar__resume'}>
       <Resume />
-    </div>
+    </Layout>
   );
 }
