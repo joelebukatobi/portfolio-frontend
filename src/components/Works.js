@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-export default function Works({ heading }) {
+export default function Works({ heading, className }) {
   return (
-    <section id="projects" className="works container ">
+    <section id="projects" className={`${className} works container`}>
       <div className="works__heading">
         <h4>{heading}</h4>
       </div>

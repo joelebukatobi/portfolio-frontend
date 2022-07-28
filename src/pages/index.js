@@ -10,7 +10,7 @@ export default function Home() {
     <div>
       <Navbar />
       <About />
-      <Works heading={'_featured projects'} />
+      <Works heading={'_featured projects'} className="pt-16rem" />
       <section class="post container">
         <div className="post__heading">
           <h4>_recent blogposts</h4>
