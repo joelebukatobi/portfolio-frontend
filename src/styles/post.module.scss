@@ -15,7 +15,7 @@
   }
 
   &__card {
-    background-color: rgba(#3b3a38, 0.8);
+    background-color: #353432;
     border-radius: 0.5rem;
     padding: 1.6rem;
     width: 29.91%;
@@ -29,13 +29,18 @@
 
     & h4 {
       font-family: $font-primary;
-      color: $color-soft-orange;
+      color: $color-white;
       text-transform: lowercase;
     }
 
+    & p {
+      text-transform: none;
+    }
+
     & a {
-      color: rgba($color-orange, 0.8);
+      color: rgba($color-soft-orange, 0.8);
       font-size: 1.6rem;
+      text-transform: lowercase;
       &:hover {
         color: $color-orange;
       }

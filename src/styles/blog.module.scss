@@ -19,6 +19,28 @@
     }
   }
 
+  &__heading {
+    margin-bottom: 3.2rem;
+    width: 100%;
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 0.8rem;
+      }
+    }
+    & p {
+      color: $color-grey;
+      text-transform: unset;
+    }
+    & a {
+      color: $color-soft-orange;
+      text-transform: capitalize !important;
+      font-weight: 700;
+      &:hover {
+        color: $color-orange;
+      }
+    }
+  }
+
   &__categories,
   &__share {
     display: flex;
@@ -30,7 +52,7 @@
     }
     & h6 {
       font-family: $font-primary;
-      color: $color-off-white;
+      color: $color-white;
       text-transform: lowercase;
     }
     & hr {
@@ -49,12 +71,18 @@
         list-style: none;
         font-size: 1.6rem;
         text-transform: lowercase;
+
+        & svg {
+          fill: $color-white;
+          height: 2.4rem;
+          width: 2.4rem;
+        }
       }
     }
   }
 
   &__card {
-    background-color: rgba(#3b3a38, 0.8);
+    background-color: #353432;
     border-radius: 0.5rem;
     padding: 1.6rem;
     width: 46.87%;
@@ -69,12 +97,13 @@
 
     & h4 {
       font-family: $font-primary;
-      color: $color-soft-orange;
+      color: $color-white;
       text-transform: lowercase;
     }
 
     & p {
-      color: rgba($color-white, 0.8);
+      text-transform: none;
+      // color: $color-grey;
     }
     & a {
       text-transform: lowercase;

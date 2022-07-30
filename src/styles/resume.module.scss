@@ -14,7 +14,8 @@
   }
 
   & p {
-    color: rgba($color-off-white, 0.8);
+    text-transform: none;
+    // color: rgba($color-off-white, 0.8);
   }
 
   &__left {
@@ -49,7 +50,8 @@
       text-transform: capitalize;
     }
     & .description {
-      color: $color-off-white;
+      color: $color-white;
+      text-transform: lowercase;
       font-weight: 700;
     }
 

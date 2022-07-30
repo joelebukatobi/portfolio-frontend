@@ -1,11 +1,18 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function Navbar({ project, resume, blog, contact }) {
+export default function Navbar({ project, resume, blog, contact, pagetitle, description, keywords }) {
   return (
     <>
       <Head>
-        <title>JetDev - Joel Ebuka Tobi</title>
+        <title>JetDev - {pagetitle}</title>
+        <meta name="description" content={description} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content="https://joelebukatobi.dev" />
+        <meta property="og:type" content="website" />
+        <meta name="robots" content="index,follow" />
+        <meta property="og:image" content="/image/image-og.png" />
+        <meta name="keywords" content={keywords} />
         <link rel="icon" type="image/x-icon" href="/images/favicon.svg" />
       </Head>
       <div className="navbar__container">
@@ -39,3 +46,11 @@ export default function Navbar({ project, resume, blog, contact }) {
     </>
   );
 }
+
+Navbar.defaultProps = {
+  pagetitle: 'Joel Ebuka Tobi',
+  description:
+    'Frontend software developer, passionate about solving problems with code and transforming ideas from pixels to scalable products.',
+  keywords:
+    'web development, web design, software development, branding, identity branding, mobile app development, mobile app design, ui/ux design, IT consultancy,',
+};

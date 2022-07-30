@@ -4,7 +4,8 @@
 // ---------------------------------------------------------------------//
 $color-white: #ffffff;
 $color-black: #000000;
-$color-orange: #eb5e28;
+$color-grey: #bebdbd;
+$color-orange: #d45524;
 $color-off-white: #fffcf2;
 $color-soft-orange: #f9b171;
 $color-dark-orange: #252422;
@@ -27,7 +28,7 @@ $font-secondary: 'Fira Code', monospace;
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  color: rgba($color-off-white, 0.8);
+  color: $color-grey;
   font-family: $font-primary;
 }
 
