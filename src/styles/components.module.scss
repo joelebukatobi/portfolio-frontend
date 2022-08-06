@@ -38,6 +38,14 @@ textarea {
   text-transform: none;
 }
 
+input,
+textarea {
+  &:focus {
+    background-color: $color-off-white;
+    color: $color-dark-orange;
+  }
+}
+
 pre {
   background-color: #353432;
   border-left: 1rem solid rgba($color-off-white, 0.8);
