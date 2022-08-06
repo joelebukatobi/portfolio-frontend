@@ -52,19 +52,19 @@ export default function About() {
                   </a>
                 </li>
                 <li>
+                  <a href="https://www.linkedin.com/in/joelebukatobi/">
+                    <svg>
+                      <use href="/images/sprite.svg#icon-linkedin" />
+                    </svg>
+                    <p>LinkedIn</p>
+                  </a>
+                </li>
+                <li>
                   <a href="https://twitter.com/joelebukatobi">
                     <svg>
                       <use href="/images/sprite.svg#icon-twitter" />
                     </svg>
                     <p>Twitter</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:joelebuka@gmail.com">
-                    <svg>
-                      <use href="/images/sprite.svg#icon-email" />
-                    </svg>
-                    <p>Email</p>
                   </a>
                 </li>
               </ul>

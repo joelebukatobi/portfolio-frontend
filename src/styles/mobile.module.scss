@@ -342,7 +342,17 @@
   margin-top: 10vh;
   @media (min-width: 320px) and (max-width: 768px) {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    &__design {
+      & p {
+        text-align: center;
+      }
+    }
+    &__list {
+      justify-content: center;
+      margin-top: 2.4rem;
+    }
   }
 }
 
