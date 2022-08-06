@@ -36,7 +36,7 @@ export async function getServerSideProps() {
   const projects = qs.stringify(
     {
       populate: ['image'],
-      sort: ['createdAt:asc'],
+      sort: ['createdAt:desc'],
     },
     {
       encodeValuesOnly: true,
