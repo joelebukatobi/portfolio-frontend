@@ -54,14 +54,14 @@ export default function Contact() {
               <input
                 type="text"
                 placeholder="First Name"
-                id="fname"
+                id="firstName"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Last Name"
-                id="fname"
+                id="lastName"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />

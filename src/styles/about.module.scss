@@ -99,9 +99,11 @@
     justify-content: space-between;
     & li {
       list-style: none;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
+      // cursor: pointer;
+      & a {
+        display: flex;
+        align-items: center;
+      }
       & svg {
         fill: $color-soft-orange;
         height: 2rem;

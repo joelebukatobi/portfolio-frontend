@@ -1,12 +1,8 @@
 module.exports = {
   reactStrictMode: true,
 
-  async rewrites() {
-    return [
-      {
-        source: '/projects',
-        destination: '/#projects',
-      },
-    ];
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
   },
 };
