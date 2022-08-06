@@ -143,7 +143,12 @@
 
     &__card {
       & figure {
-        height: 32rem;
+        height: unset;
+        & img {
+          height: 100%;
+          padding: 0;
+        }
+        // height: 22.6rem;
       }
       &__link {
         & p {
@@ -338,5 +343,13 @@
   @media (min-width: 320px) and (max-width: 768px) {
     display: flex;
     justify-content: center;
+  }
+}
+
+.success {
+  @media screen and (max-width: 768px) {
+    &__main {
+      width: 80%;
+    }
   }
 }

@@ -5,13 +5,13 @@ export default function Navbar({ project, resume, blog, contact, pagetitle, desc
   return (
     <>
       <Head>
-        <title>JetDev - {pagetitle}</title>
+        <title>{pagetitle}</title>
         <meta name="description" content={description} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content="https://joelebukatobi.dev" />
         <meta property="og:type" content="website" />
         <meta name="robots" content="index,follow" />
-        <meta property="og:image" content="/image/image-og.png" />
+        <meta property="og:image" content="/images/image-og.png" />
         <meta name="keywords" content={keywords} />
         <link rel="icon" type="image/x-icon" href="/images/favicon.svg" />
       </Head>
@@ -48,7 +48,7 @@ export default function Navbar({ project, resume, blog, contact, pagetitle, desc
 }
 
 Navbar.defaultProps = {
-  pagetitle: 'Joel Ebuka Tobi',
+  pagetitle: 'JetDev',
   description:
     'Frontend software developer, passionate about solving problems with code and transforming ideas from pixels to scalable products.',
   keywords:

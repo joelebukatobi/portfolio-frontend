@@ -7,7 +7,7 @@ const qs = require('qs');
 
 export default function index({ posts, categories }) {
   return (
-    <Layout blog={'navbar__blog'} title="_blog" pagetitle={'Blog'}>
+    <Layout blog={'navbar__blog'} title="_blog" pagetitle={'Blog | JetDev'}>
       <section className="blog container">
         <div className="blog__right">
           <Aside categories={categories} />

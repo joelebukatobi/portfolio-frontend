@@ -2,6 +2,22 @@ import Header from '@/components/Header';
 export default function Resume() {
   return (
     <section id="resume" className="resume container">
+      <ul className="resume__external">
+        <li>
+          <svg>
+            <use href="/images/sprite.svg#icon-linkedin" />
+          </svg>
+          <a href="https://www.linkedin.com/in/joelebukatobi/">Linked</a>
+        </li>
+        <li>
+          <svg>
+            <use href="/images/sprite.svg#icon-download" />
+          </svg>
+          <a href="https://docs.google.com/document/d/1-vNZJobzKZxociDVtTYS4akIpYY0tRkBiVZNg68a7yM/edit?usp=sharing">
+            Download
+          </a>
+        </li>
+      </ul>
       <div className="resume__content">
         <div className="resume__left">
           <p>
@@ -12,7 +28,7 @@ export default function Resume() {
           <div className="resume__card">
             <h6 className="title">core technologies</h6>
             <p>
-              HTML, CSS, SASS, Javascript [ES6+], React JS, Next JS, Strapi JS,TailwindCSS, Typescript, GraphQL, REST
+              HTML, CSS, SCSS, Javascript [ES6+], React JS, Next JS, Strapi JS,TailwindCSS, Typescript, GraphQL, REST
               APIs & Figma
             </p>
           </div>

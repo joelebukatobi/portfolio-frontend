@@ -36,7 +36,7 @@ export default function About() {
                 currently learning how to integrate Headless CMS using Strapi and exploring the world of DevOps as well.
               </h5>
               <ul className="about__list">
-                <a href="https://github.com/joelebukatbi">
+                <a href="https://github.com/joelebukatobi">
                   <li>
                     <svg>
                       <use href="/images/sprite.svg#icon-github" />

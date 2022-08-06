@@ -13,22 +13,22 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`${API_URL}/api/email/`, {
+    const res = await fetch(`${API_URL}/api/email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        text: message,
         to: 'me@joelebukatobi.dev',
-        subject: subject,
-        from: email,
+        from: 'noreply@joelebukatobi.dev',
+        subject: 'Website Contact Form',
+        replyTo: email,
+        text: message,
       }),
     });
 
     if (res.status === 200) {
       setOpen(true);
-      window.location.reload(true);
     }
   };
 
@@ -75,7 +75,7 @@ export default function Contact() {
             />
             <textarea
               name=""
-              placeholder="Hey Joel I've got a project I'd like to work with you on...."
+              placeholder="Hey Joel, I've got a project I'd like to work with you on..."
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}

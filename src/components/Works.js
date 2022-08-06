@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export default function Works({ heading, className }) {
   return (
     <section id="projects" className={`works container ${className}`}>
@@ -16,8 +14,8 @@ export default function Works({ heading, className }) {
           <p>GATSBY ~ TAILWINDCSS ~ GRAPHQL</p>
           <div className="works__card__group">
             <a href="https://santismed.com/">
-              <div className="works__card__link">
-                <svg className="works__card__project">
+              <div className="works__card__project">
+                <svg>
                   <use href="/images/sprite.svg#icon-link" />
                 </svg>
                 <p>Live</p>
@@ -34,16 +32,16 @@ export default function Works({ heading, className }) {
           <p>NEXT JS ~ SCSS ~ TAILWINDCSS</p>
           <div className="works__card__group">
             <a href="https://www.jaykacademy.com/">
-              <div className="works__card__link">
-                <svg className="works__card__project">
+              <div className="works__card__project">
+                <svg>
                   <use href="/images/sprite.svg#icon-link" />
                 </svg>
                 <p>Live</p>
               </div>
             </a>
             <a href="">
-              <div className="works__card__link">
-                <svg className="works__card__code">
+              <div className="works__card__code">
+                <svg className="">
                   <use href="/images/sprite.svg#icon-code" />
                 </svg>
                 <p>Code</p>
@@ -60,8 +58,8 @@ export default function Works({ heading, className }) {
           <p>HTML ~ CSS ~ JAVASCRIPT</p>
           <div className="works__card__group">
             <a href="https://lyndemedutainment.com">
-              <div className="works__card__link">
-                <svg className="works__card__project">
+              <div className="works__card__project">
+                <svg>
                   <use href="/images/sprite.svg#icon-link" />
                 </svg>
                 <p>Live</p>
