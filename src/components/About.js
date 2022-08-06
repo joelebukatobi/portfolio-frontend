@@ -1,11 +1,10 @@
 import React from 'react';
-import Link from 'next/link';
 
 export default function About() {
   return (
     <section className="about">
       <div className="container">
-        <div className="about__imgbox">
+        <div className="about__imagebox">
           <div className="about__image">
             <img src="/images/image-one.webp" alt="header-image" />
           </div>
