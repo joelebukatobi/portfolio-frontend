@@ -24,7 +24,7 @@ export default function Home({ posts, projects }) {
               onClick={() => window.open(`${project.attributes.live}`, '_blank')}
             >
               <figure>
-                <img src={project.attributes.image.data.attributes.url} alt="" />
+                <img src={project.attributes.image.data.attributes.url} alt="project snapshot" />
               </figure>
               <h5>{project.attributes.name}</h5>
               <p>{project.attributes.description}</p>

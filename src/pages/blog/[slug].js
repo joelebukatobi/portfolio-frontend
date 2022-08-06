@@ -16,7 +16,7 @@ export default function Post({ post }) {
       <Navbar blog={'navbar__blog'} pagetitle={'Blog'} />
       <section className="blogpost container">
         <div className="blogpost__image">
-          <img src={post.attributes.image.data.attributes.formats.large.url} alt="" />
+          <img src={post.attributes.image.data.attributes.formats.large.url} alt="blog image" />
         </div>
         <div className="blogpost__main">
           <div className="blogpost__aside">

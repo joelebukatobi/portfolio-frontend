@@ -7,7 +7,7 @@ export default function About() {
       <div className="container">
         <div className="about__imgbox">
           <div className="about__image">
-            <img src="/images/image-one.png" alt="" />
+            <img src="/images/image-one.webp" alt="header-image" />
           </div>
         </div>
         <div className="about__text">

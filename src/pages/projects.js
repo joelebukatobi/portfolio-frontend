@@ -9,7 +9,7 @@ export default function projects({ projects }) {
           {projects.map((project) => (
             <div className="works__card">
               <figure>
-                <img src={project.attributes.image.data.attributes.url} alt="" />
+                <img src={project.attributes.image.data.attributes.url} alt="project snapshot" />
               </figure>
               <h5>{project.attributes.name}</h5>
               <p>{project.attributes.description}</p>
