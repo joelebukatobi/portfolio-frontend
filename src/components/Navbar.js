@@ -1,14 +1,14 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function Navbar({ project, resume, blog, contact, pagetitle, description, keywords }) {
+export default function Navbar({ project, resume, blog, contact, pagetitle, description, keywords, url }) {
   return (
     <>
       <Head>
         <title>{pagetitle}</title>
         <meta name="description" content={description} />
         <meta property="og:description" content={description} />
-        <meta property="og:url" content="https://joelebukatobi.dev" />
+        <meta property="og:url" content={`https://joelebukatobi.dev/${url}`} />
         <meta property="og:type" content="website" />
         <meta name="robots" content="index,follow" />
         <meta property="og:image" content="/images/image-og.png" />
@@ -48,7 +48,7 @@ export default function Navbar({ project, resume, blog, contact, pagetitle, desc
 }
 
 Navbar.defaultProps = {
-  pagetitle: 'JetDev',
+  pagetitle: 'Joel Ebuka Tobi | JetDev',
   description:
     'Frontend software developer, passionate about solving problems with code and transforming ideas from pixels to scalable products.',
   keywords:

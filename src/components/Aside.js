@@ -7,7 +7,7 @@ export default function Aside({ className, categories }) {
         <hr />
         <ul>
           {categories.map((category) => (
-            <li>
+            <li key={category.id}>
               <Link href={`/blog/category/${category.attributes.name}`}>{category.attributes.name}</Link>
             </li>
           ))}

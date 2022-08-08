@@ -8,12 +8,19 @@ import Navbar from '@/components/Navbar';
 
 import { API_URL } from '@/config/index';
 import Copyright from '@/components/Copyright';
+import Head from 'next/head';
 const qs = require('qs');
 
-export default function Post({ post }) {
+export default function Post({ post, keywords }) {
   return (
     <div>
-      <Navbar blog={'navbar__blog'} pagetitle={'Blog'} />
+      <Head>
+        <meta name="description" content={post.attributes.description.substring(0, 100)} />
+        <meta property="og:description" content={post.attributes.description.substring(0, 100)} />
+        <meta property="og:url" content={`https://joelebukatobi.dev/blog/${post.attributes.slug} `} />
+        <meta name="keywords" content={keywords} />
+      </Head>
+      <Navbar blog={'navbar__blog'} title="_blog" pagetitle={'Blog | JetDev'} />
       <section className="blogpost container">
         <div className="blogpost__image">
           <img src={post.attributes.image.data.attributes.formats.large.url} alt="blog image" />
@@ -44,26 +51,17 @@ export async function getServerSideProps({ query: { slug } }) {
     }
   );
 
-  const latest = qs.stringify(
-    {
-      populate: ['user', 'user.image', 'image', 'categories'],
-      sort: ['date:desc'],
-      pagination: {
-        start: 0,
-        limit: 6,
-      },
-    },
-    {
-      encodeValuesOnly: true,
-    }
-  );
-
   const res = await Promise.all([fetch(`${API_URL}/api/blogposts?filters[slug][$eq]=${slug}&${query}`)]);
   const content = await Promise.all(res.map((res) => res.json()));
-  // console.log(res);
+  console.log(res);
   return {
     props: {
       post: content[0].data[0],
     },
   };
 }
+
+Post.defaultProps = {
+  keywords:
+    'web development, web design, software development, branding, identity branding, mobile app development, mobile app design, ui/ux design, IT consultancy,',
+};

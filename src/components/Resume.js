@@ -7,7 +7,7 @@ export default function Resume() {
           <svg>
             <use href="/images/sprite.svg#icon-linkedin" />
           </svg>
-          <a href="https://www.linkedin.com/in/joelebukatobi/">Linked</a>
+          <a href="https://www.linkedin.com/in/joelebukatobi/">LinkedIn</a>
         </li>
         <li>
           <svg>
