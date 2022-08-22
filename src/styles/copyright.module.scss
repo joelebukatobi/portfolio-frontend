@@ -14,7 +14,7 @@
     margin-top: 1.6rem;
     & > * {
       &:not(:last-child) {
-        margin-right: 2.4rem;
+        margin-right: 1.6rem;
       }
     }
     & li {
@@ -26,9 +26,9 @@
       }
       & svg {
         fill: $color-soft-orange;
-        height: 2rem;
-        width: 2rem;
-        margin-right: 0.6rem;
+        height: 1.6rem;
+        width: 1.6rem;
+        margin-right: 0.4rem;
       }
 
       & p {
@@ -38,5 +38,8 @@
         }
       }
     }
+  }
+  & p {
+    font-size: 1.4rem;
   }
 }
