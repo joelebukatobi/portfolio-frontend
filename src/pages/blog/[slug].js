@@ -1,14 +1,13 @@
+import Head from 'next/head';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import ReactDom from 'react-dom';
 
 import Aside from '@/components/Aside.js';
 import Share from '@/components/Share.js';
 import Navbar from '@/components/Navbar';
+import Copyright from '@/components/Copyright';
 
 import { API_URL } from '@/config/index';
-import Copyright from '@/components/Copyright';
-import Head from 'next/head';
 const qs = require('qs');
 
 export default function Post({ post, keywords }) {

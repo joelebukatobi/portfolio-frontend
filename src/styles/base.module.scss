@@ -30,22 +30,7 @@ $font-secondary: 'Fira Code', monospace;
   box-sizing: inherit;
   color: $color-grey;
   font-family: $font-primary;
-}
-
-::-webkit-scrollbar {
-  width: 0.5rem;
-  &:hover {
-    width: 1rem;
-  }
-  &-track {
-    background: $color-dark-orange;
-  }
-  &-thumb {
-    background: rgba($color-off-white, 0.05);
-    &:hover {
-      background: rgba($color-off-white, 0.2);
-    }
-  }
+  // cursor: none;
 }
 
 a,
@@ -89,6 +74,22 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; //10px/16px = 62.5% 1rem
   font-family: $font-primary;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    &:hover {
+      width: 1rem;
+    }
+    &-track {
+      background: $color-dark-orange;
+    }
+    &-thumb {
+      background: rgba($color-off-white, 0.05);
+      &:hover {
+        background: rgba($color-off-white, 0.2);
+      }
+    }
+  }
 
   @media (min-width: 320px) and (max-width: 390px) {
     font-size: 48%;

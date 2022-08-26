@@ -1,5 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
+  ssr: false,
+});
 
 export default function Navbar({ project, resume, blog, contact, pagetitle, description, keywords, url }) {
   return (
@@ -8,13 +13,22 @@ export default function Navbar({ project, resume, blog, contact, pagetitle, desc
         <title>{pagetitle}</title>
         <meta name="description" content={description} />
         <meta property="og:description" content={description} />
-        <meta property="og:url" content={`https://joelebukatobi.dev/${url}`} />
+        <meta property="og:url" content={url ? `https://joelebukatobi.dev/${url}` : `https://joelebukatobi.dev`} />
         <meta property="og:type" content="website" />
         <meta name="robots" content="index,follow" />
         <meta property="og:image" content="/images/image-og.png" />
         <meta name="keywords" content={keywords} />
         <link rel="icon" type="image/x-icon" href="/images/favicon.svg" />
       </Head>
+      <AnimatedCursor
+        innerSize={8}
+        outerSize={24}
+        color="212, 85, 36"
+        outerAlpha={0.2}
+        innerScale={0.7}
+        outerScale={4}
+        outerStyle={{ backgroundColor: '#f9b1711a', border: '.05rem solid #f9b1711a' }}
+      />
       <div className="navbar__container">
         <div className="navbar container">
           <div className="navbar__mobile">

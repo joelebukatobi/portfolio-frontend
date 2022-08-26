@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
@@ -11,7 +10,7 @@ const qs = require('qs');
 
 export default function Home({ posts, projects }) {
   return (
-    <div>
+    <>
       <Navbar />
       <About />
       <section id="projects" className="works container pt-16">
@@ -41,7 +40,7 @@ export default function Home({ posts, projects }) {
       </section>
       <Contact />
       <Copyright />
-    </div>
+    </>
   );
 }
 

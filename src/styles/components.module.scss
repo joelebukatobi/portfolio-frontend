@@ -52,12 +52,15 @@ pre {
   margin: 3.2rem 1.6rem;
   padding: 1.6rem;
   border-radius: 0.5rem;
-  overflow-x: scroll;
-  &::-webkit-scrollbar {
-    &-thumb {
-      background: rgba($color-soft-orange, 0.3);
-      &:hover {
-        background: rgba($color-off-white, 0.2);
+
+  @media all and (min-width: 320px) and (max-width: 576px) {
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      &-thumb {
+        background: rgba($color-soft-orange, 0.3);
+        &:hover {
+          background: rgba($color-off-white, 0.2);
+        }
       }
     }
   }
@@ -110,6 +113,12 @@ blockquote {
     margin: 0 auto;
     max-width: 128rem;
   }
+}
+
+.layout {
+  height: 100%;
+  width: 100%;
+  display: block;
 }
 
 .pt-16 {
