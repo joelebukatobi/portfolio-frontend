@@ -23,6 +23,17 @@ const entries = [
     name: 'preline',
     entryPoint: path.join(ROOT, 'node_modules/preline/dist/preline.js'),
   },
+  {
+    name: 'apexcharts',
+    entryPoint: path.join(ROOT, 'node_modules/apexcharts/dist/apexcharts.min.js'),
+  },
+];
+
+const staticCopies = [
+  {
+    from: path.join(ROOT, 'node_modules/apexcharts/dist/apexcharts.css'),
+    to: path.join(OUT_DIR, 'apexcharts.css'),
+  },
 ];
 
 async function run() {
@@ -39,6 +50,11 @@ async function run() {
       logLevel: 'info',
     });
     console.log(`✅ dist/js/${entry.name}.js`);
+  }
+
+  for (const { from, to } of staticCopies) {
+    fs.copyFileSync(from, to);
+    console.log(`✅ ${path.relative(ROOT, to)} (copied)`);
   }
 }
 
