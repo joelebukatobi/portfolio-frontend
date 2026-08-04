@@ -19,6 +19,10 @@ const entries = [
     name: 'htmx',
     entryPoint: path.join(ROOT, 'node_modules/htmx.org/dist/htmx.min.js'),
   },
+  {
+    name: 'preline',
+    entryPoint: path.join(ROOT, 'node_modules/preline/dist/preline.js'),
+  },
 ];
 
 async function run() {
