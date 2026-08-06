@@ -31,6 +31,10 @@ const entries = [
     name: 'alpine',
     entryPoint: path.join(ROOT, 'node_modules/alpinejs/dist/cdn.min.js'),
   },
+  {
+    name: 'lucide',
+    entryPoint: path.join(ROOT, 'node_modules/lucide/dist/umd/lucide.min.js'),
+  },
 ];
 
 const staticCopies = [
