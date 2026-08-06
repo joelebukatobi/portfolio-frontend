@@ -40,6 +40,7 @@ jobs:
       - name: Build frontend assets
         run: |
           npm run build:css
+          npm run build:js
           echo "${GITHUB_SHA}" > dist/asset-version.txt
           grep -q 'blogpost__meta' dist/css/app.css || (echo "::error::Post page styles missing from CSS build output" && exit 1)
           grep -q 'blogpost__comment-field' dist/css/app.css || (echo "::error::Comment form styles missing from CSS build output" && exit 1)

@@ -35,6 +35,7 @@ jobs:
         run: |
           npm ci --no-audit --no-fund
           npm run build:css
+          npm run build:js
           echo "${GITHUB_SHA}" > dist/asset-version.txt
 
       - name: Validate required deploy secrets
