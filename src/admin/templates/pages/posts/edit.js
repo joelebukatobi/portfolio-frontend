@@ -3,6 +3,7 @@
 
 import { escapeHtml, toastQueryScript } from '../../utils/helpers.js';
 import { DEFAULT_PLACEHOLDER_IMAGE_URL } from '../../../../lib/media-defaults.js';
+import { assetUrl } from '../../../../lib/asset-version.js';
 
 /**
  * Edit Post page inner content (layout applied via fastify-html addLayout).
@@ -211,10 +212,10 @@ export function postEditContent({ categories, tags, post, user, toast }) {
     </div>
 
     <!-- CKEditor 5 Styles -->
-    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css" />
+    <link rel="stylesheet" href="${assetUrl('/dist/js/ckeditor.css')}" />
 
     <!-- CKEditor 5 JS -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.umd.js"></script>
+    <script src="${assetUrl('/dist/js/ckeditor.js')}"></script>
 
     <script>
       const { ClassicEditor, Essentials, Bold, Italic, Underline, Strikethrough, Heading,
@@ -331,11 +332,12 @@ export function postEditContent({ categories, tags, post, user, toast }) {
               'imageTextAlternative'
             ]
           },
-          placeholder: 'Write your post content here...'
+          placeholder: 'Write your post content here...',
+          licenseKey: 'GPL'
         })
         .then(newEditor => {
           editor = newEditor;
-          
+
           // Set initial content
           const initialContent = document.getElementById('contentInput').value;
           if (initialContent) {
