@@ -3,6 +3,7 @@
 
 import { escapeHtml } from '../../utils/helpers.js';
 import { DEFAULT_PLACEHOLDER_IMAGE_URL } from '../../../../lib/media-defaults.js';
+import { assetUrl } from '../../../../lib/asset-version.js';
 
 /**
  * New Post page inner content (layout applied via fastify-html addLayout).
@@ -214,10 +215,10 @@ export function postNewContent({ categories, tags, user }) {
     </div>
 
     <!-- CKEditor 5 Styles -->
-    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css" />
+    <link rel="stylesheet" href="${assetUrl('/dist/js/ckeditor.css')}" />
 
     <!-- CKEditor 5 JS -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.umd.js"></script>
+    <script src="${assetUrl('/dist/js/ckeditor.js')}"></script>
 
     <script>
       const { ClassicEditor, Essentials, Bold, Italic, Underline, Strikethrough, Heading,
@@ -334,7 +335,8 @@ export function postNewContent({ categories, tags, user }) {
               'imageTextAlternative'
             ]
           },
-          placeholder: 'Write your post content here...'
+          placeholder: 'Write your post content here...',
+          licenseKey: 'GPL'
         })
         .then(newEditor => {
           editor = newEditor;
