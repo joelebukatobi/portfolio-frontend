@@ -69,8 +69,8 @@ export function buildPortfolioShell({ content, meta = {} }) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600;700&display=swap" />
     <link rel="stylesheet" href="${assetUrl('/dist/css/app.css')}" />
-    <script src="/vendor/htmx/htmx.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="${assetUrl('/dist/js/htmx.js')}"></script>
+    <script defer src="${assetUrl('/dist/js/alpine.js')}"></script>
   </head>
   <body>
     ${content}
@@ -141,7 +141,7 @@ export function buildComingSoonShell({ content }) {
   </head>
   <body>
     ${content}
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="${assetUrl('/dist/js/lucide.js')}"></script>
     <script>lucide.createIcons();</script>
   </body>
 </html>`;
