@@ -58,10 +58,10 @@ export function buildAuthShell({
     <link rel="stylesheet" href="${assetUrl('/dist/css/admin.css')}" />
 
     <!-- HTMX -->
-    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <script src="${assetUrl('/dist/js/htmx.js')}"></script>
 
     <!-- Lucide Icons -->
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="${assetUrl('/dist/js/lucide.js')}"></script>
   </head>
   <body>
     <!-- Admin Namespace Wrapper -->
@@ -79,7 +79,7 @@ export function buildAuthShell({
     </div>
 
     <!-- Preline JS -->
-    <script src="/vendor/preline/preline.js"></script>
+    <script src="${assetUrl('/dist/js/preline.js')}"></script>
 
     <!-- Initialize Lucide icons and handle theme -->
     <script>
