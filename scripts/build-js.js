@@ -35,12 +35,21 @@ const entries = [
     name: 'lucide',
     entryPoint: path.join(ROOT, 'node_modules/lucide/dist/umd/lucide.min.js'),
   },
+  {
+    name: 'ckeditor',
+    entryPoint: path.join(ROOT, 'assets/js/entries/ckeditor.js'),
+    globalName: 'CKEDITOR',
+  },
 ];
 
 const staticCopies = [
   {
     from: path.join(ROOT, 'node_modules/apexcharts/dist/apexcharts.css'),
     to: path.join(OUT_DIR, 'apexcharts.css'),
+  },
+  {
+    from: path.join(ROOT, 'node_modules/ckeditor5/dist/ckeditor5.css'),
+    to: path.join(OUT_DIR, 'ckeditor.css'),
   },
 ];
 
