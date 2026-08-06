@@ -179,7 +179,7 @@ export function postEditContent({ categories, tags, post, user, toast }) {
         <div class="card__footer">
           <div class="form__field-group">
             <button type="button" class="btn btn--primary" onclick="submitForm('PUBLISHED')">
-              Save
+              Publish
             </button>
             <button type="button" class="btn btn--outline-primary" onclick="submitForm('DRAFT')">
               Save Draft
