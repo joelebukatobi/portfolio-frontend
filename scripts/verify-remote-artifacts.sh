@@ -68,4 +68,24 @@ else
   exit 1
 fi
 
+JS_ARTIFACTS=(
+  htmx.js
+  preline.js
+  apexcharts.js
+  apexcharts.css
+  alpine.js
+  lucide.js
+  ckeditor.js
+  ckeditor.css
+)
+
+for artifact in "${JS_ARTIFACTS[@]}"; do
+  if retry "dist/js/${artifact}" "${BASE_URL}/dist/js/${artifact}"; then
+    echo "✅ dist/js/${artifact} is served"
+  else
+    echo "::error::dist/js/${artifact} is not reachable"
+    exit 1
+  fi
+done
+
 echo "✅ Deployed artifacts verified over HTTP"
