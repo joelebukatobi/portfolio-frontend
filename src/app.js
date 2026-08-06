@@ -115,27 +115,6 @@ export default async function app(fastify, opts) {
     decorateReply: false,
   });
 
-  // Serve node_modules/htmx.org for HTMX
-  await fastify.register(fastifyStatic, {
-    root: path.join(__dirname, '../node_modules/htmx.org/dist'),
-    prefix: '/vendor/htmx/',
-    decorateReply: false,
-  });
-
-  // Serve node_modules/preline/dist for Preline JS
-  await fastify.register(fastifyStatic, {
-    root: path.join(__dirname, '../node_modules/preline/dist'),
-    prefix: '/vendor/preline/',
-    decorateReply: false,
-  });
-
-  // Serve ApexCharts
-  await fastify.register(fastifyStatic, {
-    root: path.join(__dirname, '../node_modules/apexcharts/dist'),
-    prefix: '/vendor/apexcharts/',
-    decorateReply: false,
-  });
-
   // Serve portfolio static assets (images, fonts)
   await fastify.register(fastifyStatic, {
     root: path.join(PUBLIC_DIR, 'images'),
