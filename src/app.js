@@ -35,11 +35,9 @@ export default async function app(fastify, opts) {
           styleSrc: [
             "'self'",
             "'unsafe-inline'",
-            'https://cdn.tailwindcss.com',
-            'https://unpkg.com',
             'https://fonts.googleapis.com',
           ],
-          scriptSrc: ["'self'", 'https://unpkg.com', 'https://cdn.jsdelivr.net', "'unsafe-inline'", "'unsafe-eval'"],
+          scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
           scriptSrcAttr: ["'unsafe-inline'"],
           imgSrc: ["'self'", 'data:', 'blob:', 'https://images.unsplash.com'],
           connectSrc: ["'self'"],
