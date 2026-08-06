@@ -18,22 +18,31 @@ const entries = [
   {
     name: 'htmx',
     entryPoint: path.join(ROOT, 'node_modules/htmx.org/dist/htmx.min.js'),
+    // htmx.min.js exposes `window.htmx` only via an implicit top-level `var`
+    // leaking to global scope, which esbuild's IIFE bundling wrapper would
+    // shadow. bundle: false skips that wrapper and passes the file through
+    // (still minified) so the leak behaves the same as loading it directly.
+    bundle: false,
   },
   {
     name: 'preline',
     entryPoint: path.join(ROOT, 'node_modules/preline/dist/preline.js'),
+    bundle: false,
   },
   {
     name: 'apexcharts',
     entryPoint: path.join(ROOT, 'node_modules/apexcharts/dist/apexcharts.min.js'),
+    bundle: false,
   },
   {
     name: 'alpine',
     entryPoint: path.join(ROOT, 'node_modules/alpinejs/dist/cdn.min.js'),
+    bundle: false,
   },
   {
     name: 'lucide',
     entryPoint: path.join(ROOT, 'node_modules/lucide/dist/umd/lucide.min.js'),
+    bundle: false,
   },
   {
     name: 'ckeditor',
@@ -59,9 +68,13 @@ async function run() {
   for (const entry of entries) {
     await build({
       entryPoints: [entry.entryPoint],
-      bundle: true,
+      bundle: entry.bundle !== false,
       minify: true,
-      format: entry.format || 'iife',
+      // format: 'iife' always wraps output in an anonymous IIFE, even when
+      // bundle is false — which would shadow the pre-built files' own
+      // top-level globals (see the htmx entry above). Only apply it when
+      // actually bundling; passthrough entries get no format wrapper.
+      format: entry.bundle === false ? undefined : (entry.format || 'iife'),
       globalName: entry.globalName,
       outfile: path.join(OUT_DIR, `${entry.name}.js`),
       logLevel: 'info',
