@@ -27,6 +27,10 @@ const entries = [
     name: 'apexcharts',
     entryPoint: path.join(ROOT, 'node_modules/apexcharts/dist/apexcharts.min.js'),
   },
+  {
+    name: 'alpine',
+    entryPoint: path.join(ROOT, 'node_modules/alpinejs/dist/cdn.min.js'),
+  },
 ];
 
 const staticCopies = [
