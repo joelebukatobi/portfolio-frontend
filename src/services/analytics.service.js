@@ -3,17 +3,8 @@
 
 import { db, posts, dailyPageViews } from '../db/index.js';
 import { eq, gte, lte, sql, sum, and } from 'drizzle-orm';
+import { toDateKey } from '../lib/date-key.js';
 
-function toDateKey(date = new Date()) {
-  // Built from local date components rather than toISOString(), which
-  // converts to UTC and shifts the key back a day for any positive UTC
-  // offset — filing every view under the previous day in, say, Asia/Tokyo.
-  const d = new Date(date);
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
 
 /**
  * Analytics Service
