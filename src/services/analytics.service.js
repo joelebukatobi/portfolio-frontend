@@ -5,9 +5,14 @@ import { db, posts, dailyPageViews } from '../db/index.js';
 import { eq, gte, lte, sql, sum, and } from 'drizzle-orm';
 
 function toDateKey(date = new Date()) {
-  const normalized = new Date(date);
-  normalized.setHours(0, 0, 0, 0);
-  return normalized.toISOString().split('T')[0];
+  // Built from local date components rather than toISOString(), which
+  // converts to UTC and shifts the key back a day for any positive UTC
+  // offset — filing every view under the previous day in, say, Asia/Tokyo.
+  const d = new Date(date);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 /**
@@ -223,12 +228,8 @@ class AnalyticsService {
       trend = 'down';
     }
 
-    // Add small random variation (-3% to +3%) for realism
-    const variation = Math.floor(Math.random() * 7) - 3;
-    change = Math.max(0, change + variation);
-
     // Ensure change is reasonable
-    change = Math.min(change, 99);
+    change = Math.max(0, Math.min(change, 99));
 
     return { trend, change };
   }

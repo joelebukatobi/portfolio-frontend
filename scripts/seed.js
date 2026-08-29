@@ -2,19 +2,23 @@
 // Master seed script - combines all seeders into one
 // Usage: node scripts/seed.js [--fresh] [--core] [--images] [--videos]
 
-import { config } from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readdirSync, statSync, existsSync, mkdirSync, copyFileSync } from 'fs';
 import sharp from 'sharp';
 import crypto from 'crypto';
 import { assertLocalDevelopment } from './lib/local-dev-only.js';
+import { ensureDatabaseUrl } from '../env.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Load environment variables
-config({ path: join(__dirname, '..', '.env.development') });
+// Load environment the same way the app does: process.env, then .env.local,
+// then .env.<NODE_ENV>, then .env. Hardcoding .env.development meant this
+// script silently found no DATABASE_URL in a checkout that uses .env.local,
+// fell through to the postgres branch below, and died on an API that does
+// not exist for mysql.
+ensureDatabaseUrl({ scriptName: 'seed.js' });
 
 // Parse CLI arguments
 const args = process.argv.slice(2);
@@ -836,5 +840,19 @@ export async function seedDemoData(options = {}) {
 
 // Run seed if called directly (not imported)
 if (import.meta.url === `file://${process.argv[1]}`) {
-  seed();
+  // The mysql2 pool keeps the event loop alive, so the process must close it
+  // explicitly. Without this the script hangs forever after seeding
+  // successfully — invisible locally beyond a command that never returns, and
+  // fatal in CI where the job would run to its timeout.
+  seed()
+    .then(async () => {
+      const { closePool } = await import('../src/db/index.js');
+      await closePool();
+      process.exit(0);
+    })
+    .catch((error) => {
+      console.error('\n❌ SEED FAILED:');
+      console.error(error);
+      process.exit(1);
+    });
 }
