@@ -186,7 +186,7 @@ class SettingsController {
     } catch (error) {
       request.log.error(error);
       const isClientError = error.message?.includes('encrypt secrets')
-        || error.message?.includes('APP_ENCRYPTION_KEY');
+        || error.message?.includes('JWT_SECRET');
       reply.code(isClientError ? 400 : 500);
       return renderFragment(reply, errorAlert({
         message: isClientError

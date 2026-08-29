@@ -7,7 +7,7 @@ const PREFIX = 'enc:v1:';
 function getEncryptionKey() {
   const secret = getAppSecret();
   if (!secret) {
-    throw new Error('APP_ENCRYPTION_KEY or JWT_SECRET is required to encrypt secrets');
+    throw new Error('JWT_SECRET is required to encrypt secrets');
   }
   return crypto.createHash('sha256').update(secret).digest();
 }
