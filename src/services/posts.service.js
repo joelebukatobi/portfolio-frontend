@@ -1,6 +1,6 @@
 // src/services/posts.service.js
 import { db, posts, categories, tags, postTags, users, mediaItems, comments } from '../db/index.js';
-import { eq, and, desc, asc, like, sql, gte, lt, inArray } from 'drizzle-orm';
+import { eq, and, desc, asc, like, sql, gte, lt, inArray, exists } from 'drizzle-orm';
 import { activityService } from './activity.service.js';
 import { commentsService } from './comments.service.js';
 import { analyticsService } from './analytics.service.js';
@@ -64,6 +64,8 @@ class PostsService {
     const {
       status,
       categoryId,
+      categorySlug,
+      tagSlug,
       search,
       page = 1,
       limit = 10,
@@ -80,6 +82,34 @@ class PostsService {
     
     if (categoryId) {
       whereConditions.push(eq(posts.categoryId, categoryId));
+    }
+
+    // Slug filters resolve here rather than in the caller, so an unknown slug
+    // matches nothing instead of silently dropping the filter and returning
+    // every post.
+    if (categorySlug) {
+      whereConditions.push(
+        exists(
+          db
+            .select({ one: sql`1` })
+            .from(categories)
+            .where(and(eq(categories.id, posts.categoryId), eq(categories.slug, categorySlug))),
+        ),
+      );
+    }
+
+    // EXISTS rather than a join: a post with several tags would otherwise
+    // appear once per matching row, inflating both the page and the count.
+    if (tagSlug) {
+      whereConditions.push(
+        exists(
+          db
+            .select({ one: sql`1` })
+            .from(postTags)
+            .innerJoin(tags, eq(postTags.tagId, tags.id))
+            .where(and(eq(postTags.postId, posts.id), eq(tags.slug, tagSlug))),
+        ),
+      );
     }
     
     if (search) {
@@ -103,11 +133,17 @@ class PostsService {
           firstName: users.firstName,
           lastName: users.lastName,
           email: users.email,
+          avatarUrl: users.avatarUrl,
+          createdAt: users.createdAt,
+          updatedAt: users.updatedAt,
         },
         category: {
           id: categories.id,
           title: categories.title,
           slug: categories.slug,
+          description: categories.description,
+          createdAt: categories.createdAt,
+          updatedAt: categories.updatedAt,
         },
       })
       .from(posts)
@@ -121,8 +157,8 @@ class PostsService {
     // Sorting
     const sortColumn = posts[sortBy] || posts.createdAt;
     query = sortOrder === 'asc' 
-      ? query.orderBy(asc(sortColumn))
-      : query.orderBy(desc(sortColumn));
+      ? query.orderBy(asc(sortColumn), asc(posts.id))
+      : query.orderBy(desc(sortColumn), desc(posts.id));
 
     // Pagination
     const offset = (page - 1) * limit;
@@ -135,12 +171,41 @@ class PostsService {
     const commentCounts = await commentsService.getCommentCountsForPosts(postIds);
 
     // Format results
-    const formattedPosts = results.map(r => ({
-      ...r.post,
-      author: r.author,
-      category: r.category,
-      commentsCount: commentCounts[r.post.id] || 0,
-    }));
+    // Tags in one batched query rather than one per post. The public API
+    // renders these; the admin list ignores them, and an unused array costs
+    // nothing next to a second copy of this query in the controller.
+    const tagsByPost = {};
+    if (postIds.length > 0) {
+      const tagsData = await db
+        .select({
+          postId: postTags.postId,
+          tag: {
+            id: tags.id,
+            name: tags.name,
+            slug: tags.slug,
+            createdAt: tags.createdAt,
+            updatedAt: tags.updatedAt,
+          },
+        })
+        .from(postTags)
+        .innerJoin(tags, eq(postTags.tagId, tags.id))
+        .where(inArray(postTags.postId, postIds));
+
+      for (const { postId, tag } of tagsData) {
+        if (!tagsByPost[postId]) tagsByPost[postId] = [];
+        tagsByPost[postId].push(tag);
+      }
+    }
+
+    const formattedPosts = await this.attachFeaturedImageUrls(
+      results.map(r => ({
+        ...r.post,
+        author: r.author,
+        category: r.category,
+        tags: tagsByPost[r.post.id] || [],
+        commentsCount: commentCounts[r.post.id] || 0,
+      })),
+    );
 
     return {
       posts: formattedPosts,
@@ -156,6 +221,34 @@ class PostsService {
    * @returns {Promise<Object|null>} - Post with relations or null
    */
   async getPostById(id) {
+    return this.getPostWithRelations({ id });
+  }
+
+  /**
+   * Fetch one post with its author, category and tags.
+   *
+   * The single definition of that query. The public API used to carry its own
+   * copy, which is how a fix applied to the service could reach the admin
+   * preview and miss the published site. Selects the superset of columns both
+   * callers need — the API maps author avatars and the created/updated
+   * timestamps of every relation, which the admin does not use.
+   *
+   * @param {Object} options
+   * @param {string} [options.id] - Look up by id.
+   * @param {string} [options.slug] - Look up by slug. One of id or slug is required.
+   * @param {string} [options.status] - Restrict to posts in this status.
+   * @returns {Promise<Object|null>} Post with relations, or null.
+   */
+  async getPostWithRelations({ id, slug, status } = {}) {
+    if (!id && !slug) {
+      throw new Error('getPostWithRelations requires an id or a slug');
+    }
+
+    const conditions = [id ? eq(posts.id, id) : eq(posts.slug, slug)];
+    if (status) {
+      conditions.push(eq(posts.status, status));
+    }
+
     const result = await db
       .select({
         post: posts,
@@ -164,31 +257,38 @@ class PostsService {
           firstName: users.firstName,
           lastName: users.lastName,
           email: users.email,
+          avatarUrl: users.avatarUrl,
+          createdAt: users.createdAt,
+          updatedAt: users.updatedAt,
         },
         category: {
           id: categories.id,
           title: categories.title,
           slug: categories.slug,
+          description: categories.description,
+          createdAt: categories.createdAt,
+          updatedAt: categories.updatedAt,
         },
       })
       .from(posts)
       .leftJoin(users, eq(posts.authorId, users.id))
       .leftJoin(categories, eq(posts.categoryId, categories.id))
-      .where(eq(posts.id, id))
+      .where(and(...conditions))
       .limit(1);
 
     if (!result[0]) return null;
 
-    // Get tags for this post
     const tagsResult = await db
       .select({
         id: tags.id,
         name: tags.name,
         slug: tags.slug,
+        createdAt: tags.createdAt,
+        updatedAt: tags.updatedAt,
       })
       .from(postTags)
       .innerJoin(tags, eq(postTags.tagId, tags.id))
-      .where(eq(postTags.postId, id));
+      .where(eq(postTags.postId, result[0].post.id));
 
     return this.attachFeaturedImageUrls({
       ...result[0].post,

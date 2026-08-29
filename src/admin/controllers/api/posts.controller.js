@@ -5,8 +5,6 @@ import crypto from 'crypto';
 import { postsService } from '../../../services/posts.service.js';
 import { postLikesService } from '../../../services/post-likes.service.js';
 import { getPublicPageLimit } from '../../../lib/site-pagination.js';
-import { db, posts, categories, users, tags, postTags } from '../../../db/index.js';
-import { eq, and, desc, asc, sql, count, inArray } from 'drizzle-orm';
 
 /**
  * Format post for API response (matches existing website structure)
@@ -72,110 +70,23 @@ class PostsAPIController {
       const pageNum = parseInt(page, 10) || 1;
       const siteMap = request.siteSettingsMap ?? {};
       const limitNum = getPublicPageLimit(siteMap, limit);
-      const offset = (pageNum - 1) * limitNum;
 
-      // Build conditions
-      const conditions = [eq(posts.status, 'PUBLISHED')];
+      // Both filters are applied in the query, so the page and the count agree
+      // and an unknown slug returns nothing rather than everything.
+      const { posts: rows, total } = await postsService.getAllPosts({
+        status: 'PUBLISHED',
+        categorySlug: category,
+        tagSlug: tag,
+        page: pageNum,
+        limit: limitNum,
+        sortBy: 'publishedAt',
+        sortOrder: 'desc',
+      });
 
-      // Filter by category slug if provided
-      if (category) {
-        const categoryData = await db
-          .select({ id: categories.id })
-          .from(categories)
-          .where(eq(categories.slug, category))
-          .limit(1);
-        
-        if (categoryData.length > 0) {
-          conditions.push(eq(posts.categoryId, categoryData[0].id));
-        }
-      }
-
-      // Get total count
-      const [{ count: total }] = await db
-        .select({ count: count() })
-        .from(posts)
-        .where(and(...conditions));
-
-      // Get posts with relations
-      let postsQuery = db
-        .select({
-          post: posts,
-          author: {
-            id: users.id,
-            firstName: users.firstName,
-            lastName: users.lastName,
-            email: users.email,
-            avatarUrl: users.avatarUrl,
-            createdAt: users.createdAt,
-            updatedAt: users.updatedAt,
-          },
-          category: {
-            id: categories.id,
-            title: categories.title,
-            slug: categories.slug,
-            description: categories.description,
-            createdAt: categories.createdAt,
-            updatedAt: categories.updatedAt,
-          },
-        })
-        .from(posts)
-        .leftJoin(users, eq(posts.authorId, users.id))
-        .leftJoin(categories, eq(posts.categoryId, categories.id))
-        .where(and(...conditions))
-        .orderBy(desc(posts.publishedAt))
-        .limit(limitNum)
-        .offset(offset);
-
-      const results = await postsQuery;
-
-      // Get tags for each post (skip if no posts)
-      const postIds = results.map(r => r.post.id);
-      const tagsByPost = {};
-      
-      if (postIds.length > 0) {
-        const tagsData = await db
-          .select({
-            postId: postTags.postId,
-            tag: {
-              id: tags.id,
-              name: tags.name,
-              slug: tags.slug,
-              createdAt: tags.createdAt,
-              updatedAt: tags.updatedAt,
-            },
-          })
-          .from(postTags)
-          .innerJoin(tags, eq(postTags.tagId, tags.id))
-          .where(inArray(postTags.postId, postIds));
-
-        // Group tags by post
-        tagsData.forEach(({ postId, tag }) => {
-          if (!tagsByPost[postId]) tagsByPost[postId] = [];
-          tagsByPost[postId].push(tag);
-        });
-      }
-
-      // Format posts
-      const postsWithImages = await postsService.attachFeaturedImageUrls(
-        results.map(r => ({
-          ...r.post,
-          author: r.author,
-          category: r.category,
-          tags: tagsByPost[r.post.id] || [],
-        })),
-      );
-      const formattedPosts = postsWithImages.map(formatPostForAPI);
-
-      // Filter by tag if provided (do this after fetching)
-      let filteredPosts = formattedPosts;
-      if (tag) {
-        filteredPosts = formattedPosts.filter(post => 
-          post.tags.some(t => t.slug === tag)
-        );
-      }
+      const formattedPosts = rows.map((row) => formatPostForAPI(row));
 
       return reply.send({
-        data: filteredPosts,
+        data: formattedPosts,
         meta: {
           current_page: pageNum,
           per_page: limitNum,
@@ -202,38 +113,12 @@ class PostsAPIController {
     try {
       const { slug } = request.params;
 
-      // Get post with relations
-      const result = await db
-        .select({
-          post: posts,
-          author: {
-            id: users.id,
-            firstName: users.firstName,
-            lastName: users.lastName,
-            email: users.email,
-            avatarUrl: users.avatarUrl,
-            createdAt: users.createdAt,
-            updatedAt: users.updatedAt,
-          },
-          category: {
-            id: categories.id,
-            title: categories.title,
-            slug: categories.slug,
-            description: categories.description,
-            createdAt: categories.createdAt,
-            updatedAt: categories.updatedAt,
-          },
-        })
-        .from(posts)
-        .leftJoin(users, eq(posts.authorId, users.id))
-        .leftJoin(categories, eq(posts.categoryId, categories.id))
-        .where(and(
-          eq(posts.slug, slug),
-          eq(posts.status, 'PUBLISHED')
-        ))
-        .limit(1);
+      const postWithRelations = await postsService.getPostWithRelations({
+        slug,
+        status: 'PUBLISHED',
+      });
 
-      if (result.length === 0) {
+      if (!postWithRelations) {
         reply.code(404);
         return reply.send({
           statusCode: 404,
@@ -242,27 +127,7 @@ class PostsAPIController {
         });
       }
 
-      const { post, author, category } = result[0];
-
-      // Get tags
-      const tagsData = await db
-        .select({
-          id: tags.id,
-          name: tags.name,
-          slug: tags.slug,
-          createdAt: tags.createdAt,
-          updatedAt: tags.updatedAt,
-        })
-        .from(postTags)
-        .innerJoin(tags, eq(postTags.tagId, tags.id))
-        .where(eq(postTags.postId, post.id));
-
-      const postWithRelations = await postsService.attachFeaturedImageUrls({
-        ...post,
-        author,
-        category,
-        tags: tagsData,
-      });
+      const post = postWithRelations;
 
       // Increment view count
       await postsService.incrementViewCount(post.id);
