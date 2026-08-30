@@ -157,8 +157,8 @@ export function settingsContent({ user, settings, toast }) {
   const siteIconPreview = siteIcon
     ? `<img src="${escapeHtml(siteIcon)}" alt="Site icon" class="site-icon-field__preview-img"
            onerror="this.hidden = true; this.nextElementSibling.hidden = false;" />
-       <span hidden><i data-lucide="square-library" class="site-icon-field__preview-icon"></i></span>`
-    : `<i data-lucide="square-library" class="site-icon-field__preview-icon"></i>`;
+       <span hidden><i data-lucide="square-library" stroke-width="1" class="site-icon-field__preview-icon"></i></span>`
+    : `<i data-lucide="square-library" stroke-width="1" class="site-icon-field__preview-icon"></i>`;
 
   const socialLinks = normalizeSocialLinks(getSetting('SOCIAL', 'socialLinks', []));
   const socialLinksHtml = socialLinks.map((link) => renderSocialLinkRow(link.label, link.url)).join('');
@@ -218,7 +218,6 @@ export function settingsContent({ user, settings, toast }) {
                 </div>
                 <div class="card__header-actions">
                   <button type="submit" class="btn btn--primary btn--lg">
-                    <i data-lucide="save" stroke-width="1"></i>
                     Save Changes
                   </button>
                   <span class="card__accordion-icon">
@@ -234,26 +233,13 @@ export function settingsContent({ user, settings, toast }) {
                       <div class="site-icon-field__preview" id="siteIconPreview">
                         ${siteIconPreview}
                         <span class="site-icon-field__overlay">
-                          <i data-lucide="upload"></i>
-                          <span>${siteIcon ? 'Change' : 'Upload'}</span>
+                          <i data-lucide="upload" stroke-width="1"></i>
                         </span>
                       </div>
                     </label>
                     <div class="site-icon-field__info">
                       <span class="site-icon-field__title">Site Icon</span>
-                      <p class="form-feedback form-feedback--hint">Used in the sidebar and as the default favicon. Falls back to the library icon when empty.</p>
-                      ${siteIcon ? `
-                        <button
-                          type="button"
-                          class="btn btn--outline btn--danger btn--sm site-icon-field__remove"
-                          hx-delete="/admin/settings/icon"
-                          hx-target="#form-response"
-                          hx-swap="innerHTML"
-                          hx-include="#settings-csrf"
-                        >
-                          Remove
-                        </button>
-                      ` : ''}
+                      <p class="form-feedback form-feedback--hint">Used in the sidebar and as the default favicon. Click the icon on the left to change it, or leave it empty to fall back to the library icon.</p>
                     </div>
                   </div>
                 </div>
@@ -351,7 +337,6 @@ export function settingsContent({ user, settings, toast }) {
                 </div>
                 <div class="card__header-actions">
                   <button type="submit" class="btn btn--primary btn--lg">
-                    <i data-lucide="save" stroke-width="1"></i>
                     Save Changes
                   </button>
                   <span class="card__accordion-icon">
@@ -426,7 +411,6 @@ export function settingsContent({ user, settings, toast }) {
                 </div>
                 <div class="card__header-actions">
                   <button type="submit" class="btn btn--primary btn--lg">
-                    <i data-lucide="save" stroke-width="1"></i>
                     Save Changes
                   </button>
                   <span class="card__accordion-icon">
@@ -551,7 +535,6 @@ export function settingsContent({ user, settings, toast }) {
                 </div>
                 <div class="card__header-actions">
                   <button type="submit" class="btn btn--primary btn--lg">
-                    <i data-lucide="save" stroke-width="1"></i>
                     Save Changes
                   </button>
                   <span class="card__accordion-icon">
@@ -708,7 +691,6 @@ export function settingsContent({ user, settings, toast }) {
                 </div>
                 <div class="card__header-actions">
                   <button type="submit" class="btn btn--primary btn--lg">
-                    <i data-lucide="save" stroke-width="1"></i>
                     Save Changes
                   </button>
                   <span class="card__accordion-icon">

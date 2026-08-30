@@ -26,7 +26,8 @@
   @apply mb-0;
 
   &__row {
-    @apply flex items-stretch gap-[1.6rem];
+    // Same gap as the icon box and title in the accordion headers
+    @apply flex items-stretch gap-[1.2rem];
   }
 
   &__trigger {
@@ -40,8 +41,10 @@
   }
 
   &__preview {
-    @apply relative flex items-center justify-center;
-    @apply w-[4.8rem] h-[4.8rem] rounded-md bg-grey-100 border border-grey-200 overflow-hidden;
+    // Same dimensions as the accordion header icon boxes
+    @apply relative flex items-center justify-center shrink-0;
+    @apply h-16 w-16 rounded-lg overflow-hidden;
+    @apply bg-grey-100 border border-grey-200;
 
     .dark & {
       @apply bg-grey-800 border-grey-700;
@@ -53,7 +56,7 @@
   }
 
   &__preview-icon {
-    @apply w-[2.8rem] h-[2.8rem] text-grey-500;
+    @apply h-8 w-8 text-grey-500;
   }
 
   &__overlay {
@@ -62,19 +65,15 @@
     @apply pointer-events-none;
 
     i {
-      @apply w-[1.6rem] h-[1.6rem];
+      @apply h-8 w-8;
     }
   }
 
   &__info {
-    @apply flex flex-col justify-between min-w-0 h-[4.8rem];
+    @apply flex flex-col justify-center gap-[0.2rem] min-w-0;
 
     .form-feedback {
       @apply m-0 leading-snug;
-    }
-
-    .form-feedback--hint {
-      @apply line-clamp-2;
     }
   }
 
@@ -84,10 +83,6 @@
     .dark & {
       @apply text-grey-100;
     }
-  }
-
-  &__remove {
-    @apply self-start shrink-0;
   }
 
   &__upload-form {
