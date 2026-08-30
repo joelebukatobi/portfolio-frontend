@@ -14,6 +14,7 @@ import { fileURLToPath } from 'url';
 import { checkSetupStatus } from './middleware/setup-check.js';
 import { ensureDatabaseUrl, loadCpanelEnvVars } from '../env.js';
 import { getAppSecret } from './lib/app-secrets.js';
+import { buildHealthReport } from './lib/health-check.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -141,7 +142,6 @@ export default async function app(fastify, opts) {
 
   // Health check endpoint (used by deploy CI and external monitors)
   fastify.get('/health', async (_request, reply) => {
-    const { buildHealthReport } = await import('./lib/health-check.js');
     const report = await buildHealthReport();
     if (report.status !== 'healthy') {
       reply.code(503);
