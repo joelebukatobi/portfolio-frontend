@@ -10,10 +10,10 @@
   // Responsive grid: 2 cols mobile, 3 tablet, 5 desktop
   @apply grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 content-start items-start;
 
-  // Desktop: scroll within content area above fixed footer
+  // Desktop: scroll within content area above fixed footer.
+  // pr matches the scrollable table areas, so the cards clear the scrollbar.
   @media (min-width: 1024px) {
-    @apply flex-1 min-h-0 overflow-y-auto;
-    // padding-right: 1.6rem;
+    @apply flex-1 min-h-0 overflow-y-auto pr-[1.6rem];
   }
 
   // Empty state within media grid

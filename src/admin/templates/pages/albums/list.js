@@ -136,8 +136,8 @@ export function albumsTableFragment({ albums, pagination }) {
       <tr class="table__tr">
         <td class="table__td">
           <span class="table__label">Album</span>
-          <div class="flex items-center gap-3">
-            <img src="${coverSrc}" alt="" class="w-10 h-10 rounded object-cover" />
+          <div class="table__thumb-row">
+            <img src="${coverSrc}" alt="" class="table__thumb" />
             <div class="table__title">
               <a href="/admin/media/albums/${album.id}/edit">${album.title}</a>
             </div>

@@ -198,6 +198,17 @@
     }
   }
 
+  // Album cover thumbnail and its row wrapper. 32px square: at the 25px the
+  // markup carried inline the cover read as a smudge beside the 16px title,
+  // and 40px made the table top-heavy with photos.
+  &__thumb-row {
+    @apply flex items-center gap-2;
+  }
+
+  &__thumb {
+    @apply w-8 h-8 rounded object-cover;
+  }
+
   // Content info container (avatar + name/email)
   &__content-info {
     @apply flex items-center gap-[1.2rem];
